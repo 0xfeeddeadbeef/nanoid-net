@@ -1,12 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <TargetFrameworks>$(TargetFrameworks);net45</TargetFrameworks>
+    <TargetFrameworks>$(TargetFrameworks);net462</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
-    <Version>3.0.0</Version>
+    <LangVersion>latest</LangVersion>
+    <Version>4.0.0</Version>
     <authors>codeyu</authors>
     <AssemblyName>Nanoid</AssemblyName>
     <PackageId>Nanoid</PackageId>
@@ -20,17 +21,17 @@
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
     <Copyright>Copyright 2020 © codeyu</Copyright>
     <title>.NET Nanoid</title>
     <owners>codeyu</owners>
-    <Description>A tiny, secure, URL-friendly, unique string ID generator for .NET Core.</Description>
+    <Description>A tiny, secure, URL-friendly, unique string ID generator for .NET</Description>
     <PackageTags>Nanoid UUID</PackageTags>
     <PackageReleaseNotes>
-      3.0.0
-      - Disruptive change: Change namespace to NanoidDotNet. by @trobinpl
-      - Optimize GenerateAsync. by @bgilner
+      4.0.0
+      - Disruptive change: Target frameworks. by @0xfeeddeadbeef
+      - GenerateAsync: async state machine is not needed. by @0xfeeddeadbeef
     </PackageReleaseNotes>
     <PackageLicense>https://github.com/codeyu/nanoid-net/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/codeyu/nanoid-net</PackageProjectUrl>
@@ -42,5 +43,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Test" />
   </ItemGroup>
 </Project>
